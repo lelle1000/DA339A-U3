@@ -1,9 +1,9 @@
 package controller;
 
 //only imports what is strictly necessary from view-package
+import view.ButtonType;
 import view.CustomBikeFrame;
 import view.MainFrame;
-import view.ButtonType;
 
 public class Controller {
     private MainFrame view;
