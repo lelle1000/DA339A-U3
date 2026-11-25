@@ -1,11 +1,11 @@
-public class Vehicles extends Items {
+public class Motorcycles extends Items {
     
     private MCTypes type;
     private Colors color1;
     private Colors color2;
     private int engineSizeInCC;
 
-    public Vehicles(MCTypes type, String productName, double price, Colors color1, Colors color2, int engineSizeInCC) {
+    public Motorcycles(MCTypes type, String productName, double price, Colors color1, Colors color2, int engineSizeInCC) {
         super(productName, price);
         setType(type);
         setColors(color1, color2);
@@ -21,7 +21,7 @@ public class Vehicles extends Items {
     }
 
     public Colors getColor1() {
-        return color2;
+        return color1;
     }
 
     public Colors getColor2() {
@@ -42,13 +42,14 @@ public class Vehicles extends Items {
     }
 
     @Override
-    public double calculatePrice(MCTypes type, Colors color1, Colors color2, int engineSizeInCC) {
-        int color1PriceDifference = 0;
-        int color2PriceDifference = 0;
+    public double calculatePrice() {
+        int color1PriceDifference = colorCost(color1);
+        int color2PriceDifference = colorCost(color2);
         int typeCost = 0;
         int enginePricePerCC = 30;
 
-        switch (type) {
+        if(getType() != null) {
+            switch (getType() ) {
             case Naked:
                 typeCost = 75000;
                 break;
@@ -61,40 +62,30 @@ public class Vehicles extends Items {
             case Touring:
                 typeCost = 150000;
                 break;
-        };
-        
-        switch (color1) {
-            case black:
-                color1PriceDifference = 3000;
-                break;
-            case white:
-                color1PriceDifference = 2500;
-                break;
-            case green:
-                color1PriceDifference = 2000;
-                break;
-            case pink:
-                color1PriceDifference = 1500;
-                break;
+        }
         }
 
-        switch (color2) {
-            case black:
-                color1PriceDifference = 3000;
-                break;
-            case white:
-                color1PriceDifference = 2500;
-                break;
-            case green:
-                color1PriceDifference = 2000;
-                break;
-            case pink:
-                color1PriceDifference = 1500;
-                break;
-        }
-
-        return (double) color1PriceDifference + color2PriceDifference + typeCost + (enginePricePerCC * engineSizeInCC);
+        return (double) color1PriceDifference + color2PriceDifference + typeCost + (enginePricePerCC * getEngineSizeInCC());
     };
+
+    private int colorCost(Colors color) {
+        if (color == null) {
+            return 0;
+        }
+
+        switch (color) {
+            case black:
+                return 3000;
+            case white:
+                return 2500;
+            case green:
+                return 2000;
+            case pink:
+                return 1500;
+            default:
+                return 0;
+        }
+    }
 
 
 }

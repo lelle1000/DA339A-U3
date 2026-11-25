@@ -23,6 +23,6 @@ public abstract class Items {
         this.price = (price < 0.0) ? 0.0 : price;
     }
 
-    public abstract double calculatePrice(MCTypes type, Colors color1, Colors color2, int engineSizeInCC);
+    public abstract double calculatePrice();
 
 }
