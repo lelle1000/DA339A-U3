@@ -25,4 +25,9 @@ public abstract class Items {
 
     public abstract double calculatePrice();
 
+    @Override
+    public String toString() {
+        return productName;
+    }
+
 }
