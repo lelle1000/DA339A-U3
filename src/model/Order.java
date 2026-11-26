@@ -34,6 +34,4 @@ public class Order {
 
         return itemsArray;
     }
-
-
 }

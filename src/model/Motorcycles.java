@@ -5,7 +5,7 @@ public class Motorcycles extends Items {
     private Colors color2;
     private int engineSizeInCC;
 
-    public Motorcycles(MCTypes type, String productName, double price, Colors color1, Colors color2, int engineSizeInCC) {
+    public Motorcycles(String productName, double price, MCTypes type, Colors color1, Colors color2, int engineSizeInCC) {
         super(productName, price);
         setType(type);
         setColors(color1, color2);
@@ -85,6 +85,18 @@ public class Motorcycles extends Items {
             default:
                 return 0;
         }
+    }
+
+    @Override
+    public String toString() {
+        String name = getProductName();
+        int cc = getEngineSizeInCC();
+        MCTypes type = getType();
+        Colors color1 = getColor1();
+        Colors color2 = getColor2();
+        double price = getPrice();
+
+        return name + ", storlek: " + cc + "cc, " + "typ:" + type.toString() + ", " + color1.toString() + ", " + color2.toString() + ", " + "Pris: " + price; 
     }
 
 
