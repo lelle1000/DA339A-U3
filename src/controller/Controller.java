@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+
+import model.*;
 //only imports what is strictly necessary from view-package
 import view.ButtonType;
 import view.CustomBikeFrame;
@@ -9,6 +12,8 @@ public class Controller {
     private MainFrame view;
     private CustomBikeFrame newBikeType;
     private ButtonType currentLeftMenu = ButtonType.NoChoice;
+    private ArrayList<Items> mcMenu = new ArrayList<>();
+    private ArrayList<Items> accessoriesMenu = new ArrayList<>();
     private String [] mcMenuString; // for test purposes only
     private String [] accessoriesMenuString; // for test purposes only
     private String [] orderHistoryMenuString; // for test purposes only
@@ -25,7 +30,9 @@ public class Controller {
         view.disableViewSelectedOrderButton();
     }
 
-    
+    private void loadMenuItems() {
+        mcMenu.add(new Motorcycles("mc0", 350, MCTypes.Naked, Colors.black, Colors.pink));
+    }
 
     //This method is only used for test purposes - remove when no longer needed
     private void loadStringTestValues() {

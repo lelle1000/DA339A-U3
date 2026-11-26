@@ -1,6 +1,9 @@
+package model;
+
 public enum MCTypes {
     Naked,
     Cruiser,
     Sporting,
-    Touring
+    Touring, 
+    normal
 }

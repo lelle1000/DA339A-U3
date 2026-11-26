@@ -1,3 +1,5 @@
+package model;
+
 public class Accessories extends Items {
     public Accessories(String productName, double price) {
         super(productName, price);

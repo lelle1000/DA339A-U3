@@ -1,3 +1,5 @@
+package model;
+
 public class Motorcycles extends Items {
     
     private MCTypes type;
@@ -5,11 +7,12 @@ public class Motorcycles extends Items {
     private Colors color2;
     private int engineSizeInCC;
 
-    public Motorcycles(String productName, double price, MCTypes type, Colors color1, Colors color2, int engineSizeInCC) {
-        super(productName, price);
+    public Motorcycles(String productName, int engineSizeInCC, MCTypes type, Colors color1, Colors color2) {
+        super(productName, 0);
         setType(type);
         setColors(color1, color2);
         setEngineSizeInCC(engineSizeInCC);
+        setPrice(calculatePrice());
     }
 
     public MCTypes getType() {
@@ -17,7 +20,7 @@ public class Motorcycles extends Items {
     }
 
     public void setType(MCTypes type) {
-        this.type = (type == null) ? null : type;
+        this.type = (type == null) ? MCTypes.normal : type;
     }
 
     public Colors getColor1() {
@@ -29,8 +32,8 @@ public class Motorcycles extends Items {
     }
 
     public void setColors (Colors color1, Colors color2) {
-        this.color1 = (color1 == null) ? null : color1;
-        this.color2 = (color2 == null) ? null : color2;
+        this.color1 = (color1 == null) ? Colors.uncolored : color1;
+        this.color2 = (color2 == null) ? Colors.uncolored : color2;
     }
 
     public int getEngineSizeInCC() {
@@ -62,7 +65,9 @@ public class Motorcycles extends Items {
             case Touring:
                 typeCost = 150000;
                 break;
-        }
+            default:
+                typeCost = 50000;
+            }
         }
 
         return (double) color1PriceDifference + color2PriceDifference + typeCost + (enginePricePerCC * getEngineSizeInCC());
@@ -94,9 +99,9 @@ public class Motorcycles extends Items {
         MCTypes type = getType();
         Colors color1 = getColor1();
         Colors color2 = getColor2();
-        double price = getPrice();
+        double price = calculatePrice();
 
-        return name + ", storlek: " + cc + "cc, " + "typ:" + type.toString() + ", " + color1.toString() + ", " + color2.toString() + ", " + "Pris: " + price; 
+        return name + ", storlek: " + cc + "cc, " + "typ:" + type + ", " + color1 + ", " + color2 + ", " + "Pris: " + price; 
     }
 
 

@@ -1,6 +1,9 @@
+package model;
+
 public enum Colors {
     black,
     white,
     green,
-    pink
+    pink,
+    uncolored
 }
